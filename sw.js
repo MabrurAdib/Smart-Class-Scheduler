@@ -1,10 +1,12 @@
-const CACHE_NAME = 'study-management-hub-v3';
+const CACHE_NAME = 'study-management-hub-v4';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
-  './manifest.json'
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
