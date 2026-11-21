@@ -13,7 +13,7 @@ const PERIODS = [
 const DEFAULT_DATA = {
   "theme": "dark",
   "activePhase": "final",
-  "autoSyncRoutineTeacher": true,
+  "autoSyncRoutineTeacher": false,
   "routineMeta": {
     "semester": "5th Semester",
     "title": "Class Routine (5th Semester)",
@@ -40,12 +40,13 @@ const DEFAULT_DATA = {
     },
     {
       "code": "ELL-3524",
-      "title": "Victorian Prose and Poetry",
+      "title": "Victorian Poetry and Prose",
       "teacher": "SK",
       "midCount": 0,
       "finalCount": 2,
       "lastLesson": "Andrea - Judge all I do and tell you of its worth. (2026-11-21)",
-      "homework": "None"
+      "homework": "None",
+      "lastUpdated": "Nov 21, 11:00 PM"
     },
     {
       "code": "ELL-3525",
@@ -201,7 +202,7 @@ const DEFAULT_DATA = {
     },
     {
       "col1": "2026-10-08",
-      "col2": "Victorian Prose and Poetry (ELL-3524)",
+      "col2": "Victorian Poetry and Prose (ELL-3524)",
       "col3": "09:30 AM - 11:00 AM"
     },
     {
@@ -230,6 +231,11 @@ const DEFAULT_DATA = {
     }
   ],
   "changeHistory": [
+    {
+      "id": 1795280416891.3726,
+      "summary": "[Course ELL-3524] Name \"Victorian Poetry and Prose\" → \"Victorian Poetry and Prose\"",
+      "time": "Nov 21, 11:00 PM"
+    },
     {
       "id": 1795232591904.891,
       "summary": "[Course GEED-3503] Name \"General Education (GEED-3503)\" → \"Political Thoughts and Social Behavior\"",
@@ -419,9 +425,18 @@ const DEFAULT_DATA = {
 
 /* ===== STATE MANAGEMENT ===== */
 let state = loadState();
-let calYear = 2026;
-let calMonth = 10; // November (0-indexed: 10)
-let selectedCalDate = '2026-11-20';
+function getLocalTodayStr() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+const _todayInitial = new Date();
+let calYear = _todayInitial.getFullYear();
+let calMonth = _todayInitial.getMonth();
+let selectedCalDate = getLocalTodayStr();
 
 const editModes = {
   routine: false,
@@ -528,7 +543,11 @@ function syncSemesterHeaderLabels() {
 }
 
 function initDates() {
-  const todayStr = new Date().toISOString().split('T')[0];
+  const todayStr = getLocalTodayStr();
+  const nowObj = new Date();
+  calYear = nowObj.getFullYear();
+  calMonth = nowObj.getMonth();
+  selectedCalDate = todayStr;
   document.getElementById('checkDate').value = todayStr;
   document.getElementById('logDate').value = todayStr;
   document.getElementById('currentPhase').value = state.activePhase || 'final';
@@ -682,7 +701,7 @@ function checkSlotAvailability() {
 }
 
 function copyDailyReport() {
-  const today = new Date().toISOString().split('T')[0];
+  const today = getLocalTodayStr();
   const todayLogs = state.logs.filter((l) => l.date === today);
   const sem = state.routineMeta.semester || 'Semester';
   let lines = [`📚 *ACR Class Update — ${sem} (${today})*`, ''];
@@ -1525,17 +1544,20 @@ function renderCalendar() {
     html += `<div class="cal-day empty"></div>`;
   }
 
+  const todayStr = getLocalTodayStr();
   for (let day = 1; day <= daysInMonth; day++) {
     const mm = String(calMonth + 1).padStart(2, '0');
     const dd = String(day).padStart(2, '0');
     const dateStr = `${calYear}-${mm}-${dd}`;
     const dObj = new Date(calYear, calMonth, day);
     const isFriday = dObj.getDay() === 5;
+    const isToday = dateStr === todayStr;
     const offInfo = state.offDays[dateStr];
     const isYellowOff = !isFriday && offInfo && offInfo.isYellowOff;
     const exam = state.examRoutine.find((ex) => ex.col1.includes(dateStr));
 
     let classes = 'cal-day';
+    if (isToday) classes += ' today';
     if (isFriday) classes += ' friday';
     if (isYellowOff) classes += ' yellow-off';
     if (exam) classes += ' exam-day';
