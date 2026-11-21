@@ -11,159 +11,410 @@ const PERIODS = [
 ];
 
 const DEFAULT_DATA = {
-  theme: 'dark',
-  activePhase: 'final',
-  autoSyncRoutineTeacher: true,
-  routineMeta: {
-    semester: '5th Semester',
-    title: 'Class Routine (5th Semester)',
-    effectiveFrom: 'Effective from: 16 November 2026 (Monday)'
+  "theme": "dark",
+  "activePhase": "final",
+  "autoSyncRoutineTeacher": true,
+  "routineMeta": {
+    "semester": "5th Semester",
+    "title": "Class Routine (5th Semester)",
+    "effectiveFrom": "Effective from: 16 November 2026 (Monday)"
   },
-  courses: [
+  "courses": [
     {
-      code: 'ELL-3522',
-      title: 'Restoration and 18th Century Literature',
-      teacher: 'AU',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
+      "code": "ELL-3522",
+      "title": "Restoration and 18th Century Literature",
+      "teacher": "AU",
+      "midCount": 0,
+      "finalCount": 0,
+      "lastLesson": "Not logged yet",
+      "homework": "None"
     },
     {
-      code: 'ELL-3523',
-      title: 'Romantic Poetry',
-      teacher: 'SK',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
+      "code": "ELL-3523",
+      "title": "Romantic Poetry",
+      "teacher": "SK",
+      "midCount": 0,
+      "finalCount": 0,
+      "lastLesson": "Andrea del Sarto - I mean that I should earn......give you more (2026-11-18)",
+      "homework": "None"
     },
     {
-      code: 'ELL-3524',
-      title: 'Victorian Prose and Poetry',
-      teacher: 'SK',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
+      "code": "ELL-3524",
+      "title": "Victorian Prose and Poetry",
+      "teacher": "SK",
+      "midCount": 0,
+      "finalCount": 2,
+      "lastLesson": "Andrea - Judge all I do and tell you of its worth. (2026-11-21)",
+      "homework": "None"
     },
     {
-      code: 'ELL-3525',
-      title: 'The English Novel from Austen to Hardy',
-      teacher: 'ASNU',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
+      "code": "ELL-3525",
+      "title": "The English Novel from Austen to Hardy",
+      "teacher": "ASNU",
+      "midCount": 0,
+      "finalCount": 0,
+      "lastLesson": "Not logged yet",
+      "homework": "None"
     },
     {
-      code: 'ELL-3526',
-      title: 'Western Classics in Translation',
-      teacher: 'MM',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
+      "code": "ELL-3526",
+      "title": "Western Classics in Translation",
+      "teacher": "MM",
+      "midCount": 0,
+      "finalCount": 0,
+      "lastLesson": "Not logged yet",
+      "homework": "None"
     },
     {
-      code: 'ELL-3527',
-      title: 'Basic Sciences',
-      teacher: 'DSU',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
+      "code": "ELL-3527",
+      "title": "Basic Sciences",
+      "teacher": "DSU",
+      "midCount": 0,
+      "finalCount": 13,
+      "lastLesson": "Not logged yet",
+      "homework": "None"
     },
     {
-      code: 'GEED-3503',
-      title: 'General Education (GEED-3503)',
-      teacher: 'MMA',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
+      "code": "GEED-3503",
+      "title": "Political Thoughts and Social Behavior",
+      "teacher": "MMA",
+      "midCount": 0,
+      "finalCount": 3,
+      "lastLesson": "Polygamy (2026-11-21)",
+      "homework": "None",
+      "lastUpdated": "Nov 21, 09:43 AM"
     },
     {
-      code: 'MDP-3503',
-      title: 'Multidisciplinary Course (MDP-3503)',
-      teacher: 'MFR',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
-    },
-    {
-      code: 'URED-3503',
-      title: 'Political Thoughts and Social Behaviour',
-      teacher: 'TBA',
-      midCount: 0,
-      finalCount: 0,
-      lastLesson: 'Not logged yet',
-      homework: 'None',
-      lastUpdated: ''
+      "code": "MDP-3503",
+      "title": "Moral Development Program (MDP-3503)",
+      "teacher": "MFR",
+      "midCount": 0,
+      "finalCount": 0,
+      "lastLesson": "Not logged yet",
+      "homework": "None",
+      "lastUpdated": "Nov 20, 06:43 PM"
     }
   ],
-  routine: {
-    Saturday: ['ELL-3525 (ASNU)', 'ELL-3524 (SK)', 'GEED-3503 (MMA)', 'ELL-3527 (DSU)', 'ELL-3527 (DSU)', 'MDP-3503 (MFR)'],
-    Sunday: ['ELL-3525 (ASNU)', 'ELL-3523 (SK)', 'GEED-3503 (MMA)', 'ELL-3526 (MM)', 'ELL-3524 (SK)', ''],
-    Monday: ['', 'ELL-3526 (MM)', 'ELL-3525 (ASNU)', 'ELL-3522 (AU)', 'ELL-3523 (SK)', ''],
-    Tuesday: ['ELL-3522 (AU)', 'ELL-3526 (MM)', '', 'ELL-3522 (AU)', 'ELL-3523 (SK)', ''],
-    Wednesday: ['', '', '', '', '', ''],
-    Thursday: ['', '', '', '', '', '']
+  "routine": {
+    "Saturday": [
+      "ELL-3525 (ASNU)",
+      "ELL-3524 (SK)",
+      "GEED-3503 (MMA)",
+      "ELL-3527 (DSU)",
+      "ELL-3527 (DSU)",
+      "MDP-3503 (MFR)"
+    ],
+    "Sunday": [
+      "ELL-3525 (ASNU)",
+      "ELL-3523 (SK)",
+      "GEED-3503 (MMA)",
+      "ELL-3526 (MM)",
+      "ELL-3524 (SK)",
+      ""
+    ],
+    "Monday": [
+      "",
+      "ELL-3526 (MM)",
+      "ELL-3525 (ASNU)",
+      "ELL-3522 (AU)",
+      "ELL-3523 (SK)",
+      ""
+    ],
+    "Tuesday": [
+      "ELL-3522 (AU)",
+      "ELL-3526 (MM)",
+      "",
+      "ELL-3522 (AU)",
+      "ELL-3523 (SK)",
+      ""
+    ],
+    "Wednesday": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "Thursday": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
-  teachers: [
-    { short: 'MM', full: 'Md. Morshedul Alam', designation: 'Associate Professor', lastUpdated: '' },
-    { short: 'ASNU', full: 'Abu Saleh Nizam Uddin', designation: 'Associate Professor', lastUpdated: '' },
-    { short: 'SK', full: 'Sajjadul Karim', designation: 'Assistant Professor', lastUpdated: '' },
-    { short: 'AU', full: 'Absar Uddin', designation: 'Assistant Professor', lastUpdated: '' },
-    { short: 'MFR', full: 'Musfiq', designation: 'Lecturer', lastUpdated: '' },
-    { short: 'DSU', full: 'Dr. Saif Uddin', designation: 'Faculty', lastUpdated: '' },
-    { short: 'MMA', full: 'MMA', designation: 'Faculty', lastUpdated: '' }
+  "teachers": [
+    {
+      "short": "MM",
+      "full": "Md. Morshedul Alam",
+      "designation": "Associate Professor"
+    },
+    {
+      "short": "ASNU",
+      "full": "Abu Saleh Nizam Uddin",
+      "designation": "Associate Professor"
+    },
+    {
+      "short": "SK",
+      "full": "Sajjadul Karim",
+      "designation": "Assistant Professor"
+    },
+    {
+      "short": "AU",
+      "full": "Absar Uddin",
+      "designation": "Assistant Professor"
+    },
+    {
+      "short": "MFR",
+      "full": "Musfiq",
+      "designation": "Lecturer"
+    },
+    {
+      "short": "DSU",
+      "full": "Dr. Saif Uddin",
+      "designation": "Faculty"
+    },
+    {
+      "short": "MMA",
+      "full": "Md. Munirul Alam",
+      "designation": "Faculty"
+    }
   ],
-  busRegular: [
-    { col1: 'Morning Campus Bus', col2: '08:30 AM', col3: 'Regular Route' },
-    { col1: 'Return Bus 1', col2: '02:40 PM', col3: 'Campus to City' },
-    { col1: 'Return Bus 2', col2: '04:20 PM', col3: 'Campus to City' }
+  "busRegular": [],
+  "examRoutine": [
+    {
+      "col1": "2026-10-03",
+      "col2": "Basic Sciences (ELL-3527)",
+      "col3": "09:30 AM - 11:00 AM"
+    },
+    {
+      "col1": "2026-10-04",
+      "col2": "Restoration and 18th Century Literature (ELL-3522)",
+      "col3": "09:30 AM - 11:00 AM"
+    },
+    {
+      "col1": "2026-10-06",
+      "col2": "Romantic Poetry (ELL-3523)",
+      "col3": "09:30 AM - 11:00 AM"
+    },
+    {
+      "col1": "2026-10-08",
+      "col2": "Victorian Prose and Poetry (ELL-3524)",
+      "col3": "09:30 AM - 11:00 AM"
+    },
+    {
+      "col1": "2026-10-11",
+      "col2": "The English Novel from Austen to Hardy (ELL-3525)",
+      "col3": "09:30 AM - 11:00 AM"
+    },
+    {
+      "col1": "2026-10-13",
+      "col2": "Western Classics in Translation (ELL-3526)",
+      "col3": "09:30 AM - 11:00 AM"
+    }
   ],
-  examRoutine: [
-    { col1: '2026-10-01', col2: 'Political Thoughts and Social Behaviour (URED-3503)', col3: '09:30 AM - 11:00 AM' },
-    { col1: '2026-10-03', col2: 'Basic Sciences (ELL-3527)', col3: '09:30 AM - 11:00 AM' },
-    { col1: '2026-10-04', col2: 'Restoration and 18th Century Literature (ELL-3522)', col3: '09:30 AM - 11:00 AM' },
-    { col1: '2026-10-06', col2: 'Romantic Poetry (ELL-3523)', col3: '09:30 AM - 11:00 AM' },
-    { col1: '2026-10-08', col2: 'Victorian Prose and Poetry (ELL-3524)', col3: '09:30 AM - 11:00 AM' },
-    { col1: '2026-10-11', col2: 'The English Novel from Austen to Hardy (ELL-3525)', col3: '09:30 AM - 11:00 AM' },
-    { col1: '2026-10-13', col2: 'Western Classics in Translation (ELL-3526)', col3: '09:30 AM - 11:00 AM' }
+  "busExam": [
+    {
+      "col1": "Exam Morning Bus",
+      "col2": "08:00 AM",
+      "col3": "Exam Days Only"
+    }
   ],
-  busExam: [
-    { col1: 'Exam Morning Bus', col2: '08:00 AM', col3: 'Exam Days Only' }
+  "academicNotes": [
+    {
+      "col1": "X-Mas-Day",
+      "col2": "2026/12/25",
+      "col3": "Off-days"
+    }
   ],
-  academicNotes: [
-    { col1: 'New Routine Effective', col2: '2026-11-16', col3: 'Post-Midterm 5th Semester Routine' },
-    { col1: 'Weekly Holiday', col2: 'Every Friday', col3: 'Automatic Off-Day (Non-Yellow)' }
+  "changeHistory": [
+    {
+      "id": 1795232591904.891,
+      "summary": "[Course GEED-3503] Name \"General Education (GEED-3503)\" → \"Political Thoughts and Social Behavior\"",
+      "time": "Nov 21, 09:43 AM"
+    },
+    {
+      "id": 1795178616418.2563,
+      "summary": "[Course MDP-3503] Name \"Multidisciplinary Course (MDP-3503)\" → \"Moral Development Program (MDP-3503)\"",
+      "time": "Nov 20, 06:43 PM"
+    },
+    {
+      "id": 1795178499852.7676,
+      "summary": "[Course URED-3503] Removed from active courses",
+      "time": "Nov 20, 06:41 PM"
+    }
   ],
-  changeHistory: [],
-  logs: [],
-  offDays: {},
-  syllabus: {
-    'ELL-3522': [],
-    'ELL-3523': [],
-    'ELL-3524': [],
-    'ELL-3525': [],
-    'ELL-3526': [],
-    'ELL-3527': [],
-    'GEED-3503': [],
-    'MDP-3503': [],
-    'URED-3503': []
+  "logs": [
+    {
+      "id": 1795258143329,
+      "course": "GEED-3503",
+      "date": "2026-11-21",
+      "term": "final",
+      "status": "held",
+      "cause": "",
+      "takenLater": true,
+      "lesson": "Polygamy",
+      "homework": ""
+    },
+    {
+      "id": 1795258092415,
+      "course": "ELL-3525",
+      "date": "2026-11-21",
+      "term": "final",
+      "status": "postponed",
+      "cause": "Busy",
+      "takenLater": false,
+      "lesson": "",
+      "homework": ""
+    },
+    {
+      "id": 1795258051331,
+      "course": "ELL-3524",
+      "date": "2026-11-21",
+      "term": "final",
+      "status": "held",
+      "cause": "",
+      "takenLater": true,
+      "lesson": "Andrea - Judge all I do and tell you of its worth.",
+      "homework": ""
+    },
+    {
+      "id": 1795172785358,
+      "course": "ELL-3525",
+      "date": "2026-11-10",
+      "term": "final",
+      "status": "postponed",
+      "cause": "Due to Conference Work",
+      "takenLater": false,
+      "lesson": "",
+      "homework": ""
+    },
+    {
+      "id": 1795172686461,
+      "course": "ELL-3522",
+      "date": "2026-11-10",
+      "term": "final",
+      "status": "postponed",
+      "cause": "For Football Match",
+      "takenLater": false,
+      "lesson": "",
+      "homework": ""
+    },
+    {
+      "id": 1795172665951,
+      "course": "ELL-3522",
+      "date": "2026-11-10",
+      "term": "final",
+      "status": "postponed",
+      "cause": "For Football Match",
+      "takenLater": false,
+      "lesson": "",
+      "homework": ""
+    },
+    {
+      "id": 1795172420718,
+      "course": "ELL-3526",
+      "date": "2026-11-19",
+      "term": "final",
+      "status": "postponed",
+      "cause": "Was Busy for a Conference",
+      "takenLater": false,
+      "lesson": "",
+      "homework": ""
+    },
+    {
+      "id": 1795172329489,
+      "course": "ELL-3522",
+      "date": "2026-11-19",
+      "term": "final",
+      "status": "postponed",
+      "cause": "Was Busy in International Conference",
+      "takenLater": false,
+      "lesson": "",
+      "homework": ""
+    },
+    {
+      "id": 1795171799578,
+      "course": "ELL-3524",
+      "date": "2026-11-18",
+      "term": "final",
+      "status": "held",
+      "cause": "",
+      "takenLater": true,
+      "lesson": "Andrea del Sarto  - I mean that I should earn more, give you more",
+      "homework": ""
+    },
+    {
+      "id": 1795171760471,
+      "course": "ELL-3523",
+      "date": "2026-11-18",
+      "term": "final",
+      "status": "held",
+      "cause": "",
+      "takenLater": true,
+      "lesson": "Andrea del Sarto - I mean that I should earn......give you more",
+      "homework": ""
+    },
+    {
+      "id": 1795170753742,
+      "course": "ELL-3523",
+      "date": "2026-11-19",
+      "term": "final",
+      "status": "held",
+      "cause": "",
+      "takenLater": true,
+      "lesson": "Nightingale - and with thee......forest dim",
+      "homework": ""
+    },
+    {
+      "id": 1795170684255,
+      "course": "ELL-3523",
+      "date": "2026-11-19",
+      "term": "final",
+      "status": "held",
+      "cause": "",
+      "takenLater": true,
+      "lesson": "Nightingale - and with thee......forest dim",
+      "homework": ""
+    },
+    {
+      "id": 1795170613869,
+      "course": "ELL-3523",
+      "date": "2026-11-19",
+      "term": "final",
+      "status": "held",
+      "cause": "",
+      "takenLater": true,
+      "lesson": "and with thee fade away into the forest dim - Ode to a",
+      "homework": ""
+    }
+  ],
+  "offDays": {
+    "2026-11-19": {
+      "isYellowOff": false,
+      "note": ""
+    },
+    "2026-11-18": {
+      "isYellowOff": false,
+      "note": ""
+    }
   },
-  notes: {}
+  "syllabus": {
+    "ELL-3522": [],
+    "ELL-3523": [],
+    "ELL-3524": [],
+    "ELL-3525": [],
+    "ELL-3526": [],
+    "ELL-3527": [],
+    "GEED-3503": [],
+    "MDP-3503": [],
+    "URED-3503": []
+  },
+  "notes": {
+    "ELL-3522": []
+  }
 };
 
 /* ===== STATE MANAGEMENT ===== */
